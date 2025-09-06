@@ -1,23 +1,29 @@
-import { Component, inject, OnInit, resource } from '@angular/core';
+import { Component, inject, OnInit, resource, signal } from '@angular/core';
 import { Weather } from '../../services/weather/weather';
 import { SampleCard } from '../../components/sample-card/sample-card';
+import { SearchBar } from '../../components/search-bar/search-bar';
 
 @Component({
   selector: 'app-home',
   imports: [
-    SampleCard
+    SampleCard,
+    SearchBar
   ],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
 export class Home {
 
-  //injector
   private readonly weatherService = inject(Weather);
 
-  //signals
-  public readonly weatherDataResource = resource({
-    loader: () => this.weatherService.getWeather('Makati')
+  city = signal('Makati');
+
+  weatherDataResource = resource({
+    loader: () => this.weatherService.getWeather(this.city())
   });
 
+  onCitySearch(city: string) {
+    this.city.set(city);
+    this.weatherDataResource.reload();
+  }
 }

@@ -1,10 +1,22 @@
-<div class="card">
-    <div class="card-header">
-        <h2>{{ weatherData()?.name }}</h2>
-    </div>
-    <div class="card-body">
-        <p><strong>Temperature:</strong> {{ weatherData()?.main?.temp }}°C</p>
-        <p><strong>Humidity:</strong> {{ weatherData()?.main?.humidity }}%</p>
-        <p><strong>Wind Speed:</strong> {{ weatherData()?.wind?.speed }} km/h</p>
-    </div>
+<div class="max-w-sm mx-auto bg-white rounded-2xl shadow-lg overflow-hidden bg-gradient-to-br from-blue-100 to-blue-300">
+  <div class="bg-blue-600 px-6 py-4 bg-gradient-to-br from-blue-400 to-blue-600">
+    <h2 class="text-xl font-semibold text-white">
+      {{ weatherData()?.name }}
+    </h2>
+  </div>
+
+  <div class="px-6 py-4 space-y-2 text-gray-700">
+    <p>
+      <span class="font-semibold">🌡 Temperature:</span>
+      {{ weatherData()?.main?.temp }}°C
+    </p>
+    <p>
+      <span class="font-semibold">💧 Humidity:</span>
+      {{ weatherData()?.main?.humidity }}%
+    </p>
+    <p>
+      <span class="font-semibold">💨 Wind Speed:</span>
+      {{ weatherData()?.wind?.speed }} km/h
+    </p>
+  </div>
 </div>

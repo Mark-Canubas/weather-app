@@ -1,0 +1,30 @@
+<div class="space-y-3 max-w-md w-full">
+  <input 
+    type="text" 
+    placeholder="Enter city name" 
+    [(ngModel)]="city"
+    class="w-full px-4 py-2 bg-white border border-blue-400 text-gray-800 
+           rounded-lg shadow-sm placeholder-gray-400
+           focus:outline-none focus:ring-2 focus:ring-blue-400" 
+  />
+  <select 
+    id="units" 
+    [(ngModel)]="units" 
+    class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm 
+           focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400
+           text-gray-800 bg-white"
+  >
+    <option value="metric">Metric</option>
+    <option value="imperial">Imperial</option>
+    <option value="standard">Kelvin</option>
+  </select>
+
+  <button 
+    (click)="onSearch()" 
+    class="w-full px-4 py-2 bg-blue-600 text-white font-medium rounded-lg
+           cursor-pointer hover:bg-blue-700 focus:outline-none
+           focus:ring-2 focus:ring-blue-400 transition-colors"
+  >
+    Search
+  </button>
+</div>
