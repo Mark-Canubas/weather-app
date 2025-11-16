@@ -2,7 +2,6 @@
 <div class="w-full max-w-2xl mx-auto">
   <div class="relative">
     <div class="flex gap-3 items-center">
-      <!-- Modern Search Input with Glass Effect -->
       <div class="relative flex-1 group">
         <input 
           type="text" 
@@ -10,7 +9,7 @@
           (input)="onInputChange($event)"
           (keydown.enter)="onSearch()"
           placeholder="Search for a city (e.g., Makati, Dasmarinas, Tanza)"
-          class="w-full text-sm py-3 px-5 rounded-2xl bg-white/95 backdrop-blur-sm border-2 border-slate-200 shadow-lg focus:border-slate-400 focus:ring-4 focus:ring-slate-200 transition-all outline-none placeholder:text-slate-400"
+          class="w-full text-sm py-3 px-5 rounded-2xl border border-gray-300 shadow-lg focus:border-gray-400 focus:ring-4 focus:ring-gray-200 transition-all outline-none placeholder:text-gray-400"
         />
       </div>
       
@@ -19,7 +18,7 @@
         type="button" 
         (click)="onSearch()"
         [disabled]="!searchQuery().trim()"
-        class="group relative py-3 px-3 rounded-2xl bg-slate-600 hover:bg-slate-700 disabled:bg-slate-300 text-white font-semibold shadow-lg hover:shadow-xl disabled:shadow-md transition-all hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed overflow-hidden"
+        class="group relative py-3 px-3 rounded-2xl bg-gray-900 text-white font-semibold shadow-lg transition-all hover:scale-105 disabled:cursor-not-allowed overflow-hidden"
       >
         <span class="relative z-10 flex items-center gap-2 text-sm">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
