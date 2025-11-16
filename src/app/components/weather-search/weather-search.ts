@@ -4,7 +4,6 @@ import { ButtonDirective } from "primeng/button";
 
 @Component({
   selector: 'app-weather-search',
-  imports: [ButtonDirective],
   templateUrl: './weather-search.html'
 })
 

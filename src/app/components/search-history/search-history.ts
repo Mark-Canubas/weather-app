@@ -46,10 +46,8 @@ export class SearchHistory {
     public addItem(city: string, country: string, units: 'metric' | 'imperial'): void {
         const currentHistory = this.history();
 
-        const filtered = currentHistory.filter(item =>
-            !(item.city.toLowerCase() === city.toLowerCase() && item.country === country)
-        );
-
+        const filtered = currentHistory.filter(item => !(item.city.toLowerCase() === city.toLowerCase() && item.country === country));
+        
         const newHistory = [
             { city, country, timestamp: new Date(), units },
             ...filtered
