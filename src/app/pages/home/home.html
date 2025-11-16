@@ -1,9 +1,40 @@
-<!--
-Welcome to the Weather App project! 🚀
+<div class="min-h-screen py-4 px-4 bg-slate-100">
+    <p-toast position="top-right" />
 
-Dear new hire, we're excited to have you on board. Please make sure to read the README.md file in this repository for important instructions, project guidelines, and onboarding steps before you start coding.
--->
-<!-- You can freely remove the <app-sample-card> and create your 
-    own components for displaying weather data. -->
-    
-<app-sample-card [weatherData]="weatherDataResource.value()"></app-sample-card>
+    <!-- Header -->
+    <header class="text-center mb-6">
+        <div class="flex items-center justify-center gap-4 mb-2">
+            <h1 class="text-4xl md:text-5xl font-bold text-slate-800 tracking-tight">
+                Weather App
+            </h1>
+            <button 
+                (click)="toggleUnitSystem()"
+                class="px-3 py-1 rounded-lg bg-slate-200 hover:bg-slate-300 text-slate-700 text-sm font-medium transition-all border border-slate-300 hover:scale-105">
+                {{ unitSystem() === 'metric' ? '°C' : '°F' }}
+            </button>
+        </div>
+        <p class="text-sm text-slate-600">Get real-time weather information for any city</p>
+    </header>
+
+    <!-- Search Section -->
+    <section class="mb-4">
+        <app-weather-search (searchTriggered)="onSearchCity($event)" />
+    </section>
+
+    <!-- Weather Data Section -->
+    <section class="max-w-4xl mx-auto">
+        @if (weatherDataResource.isLoading()) {
+        <app-loading-spinner />
+        } @else if (weatherDataResource.error()) {
+        <div class="text-center py-16 bg-white rounded-3xl shadow-lg border border-slate-200">
+            <i class="pi pi-exclamation-circle text-6xl text-slate-500 mb-4"></i>
+            <h3 class="text-2xl font-semibold text-slate-800 mb-2">Oops! Something went wrong</h3>
+            <p class="text-slate-600 mb-6">
+                {{'Unable to fetch weather data' }}
+            </p>
+        </div>
+        } @else if (weatherDataResource.value()) {
+        <app-sample-card [weatherData]="weatherDataResource.value()" [unitSystem]="unitSystem()" />
+        }
+    </section>
+</div>

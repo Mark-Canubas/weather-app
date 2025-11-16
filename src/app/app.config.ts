@@ -5,6 +5,10 @@ import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { providePrimeNG } from 'primeng/config';
+import lara from '@primeuix/themes/lara';
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
@@ -12,5 +16,14 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes, withComponentInputBinding()),
     provideClientHydration(withEventReplay()),
     provideHttpClient(withFetch()),
+    provideAnimationsAsync(),
+    providePrimeNG({
+      theme: {
+        preset: lara,
+        options: {
+          darkModeSelector: '.dm-pep-sys',
+        },
+      },
+    })
   ],
 };
