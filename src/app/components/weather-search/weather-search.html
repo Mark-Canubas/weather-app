@@ -1,34 +1,20 @@
 @if (isBrowser()) {
-<div class="w-full max-w-2xl mx-auto">
-  <div class="relative">
-    <div class="flex gap-3 items-center">
-      <div class="relative flex-1 group">
-        <input 
-          type="text" 
-          [value]="searchQuery()"
-          (input)="onInputChange($event)"
-          (keydown.enter)="onSearch()"
-          placeholder="Search for a city (e.g., Makati, Dasmarinas, Tanza)"
-          class="w-full text-sm py-3 px-5 rounded-2xl border border-gray-300 shadow-lg focus:border-gray-400 focus:ring-4 focus:ring-gray-200 transition-all outline-none placeholder:text-gray-400"
-        />
-      </div>
-      
-      <!-- Modern Search Button -->
-      <button 
-        type="button" 
-        (click)="onSearch()"
-        [disabled]="!searchQuery().trim()"
-        class="group relative py-3 px-3 rounded-2xl bg-gray-900 text-white font-semibold shadow-lg transition-all hover:scale-105 disabled:cursor-not-allowed overflow-hidden"
-      >
-        <span class="relative z-10 flex items-center gap-2 text-sm">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
-            <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
-          </svg>
-          Search
-        </span>
-        <div class="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
-      </button>
-    </div>
+<div class="flex gap-3 items-center">
+  <div class="relative flex-1 group">
+    <input type="text" [value]="searchQuery()" (input)="onInputChange($event)" (keydown.enter)="onSearch()"
+      placeholder="Search for a city (e.g., Makati, Dasmarinas, Tanza)"
+      class="w-full text-sm py-3 px-5 rounded-2xl border border-gray-300 shadow-lg focus:border-gray-400 focus:ring-4 focus:ring-gray-200 transition-all outline-none placeholder:text-gray-400" />
   </div>
+
+  <!-- Modern Search Button -->
+  <button pButton type="button" (click)="onSearch()" [disabled]="!searchQuery().trim()"
+    class="p-3 rounded-2xl bg-gray-600 hover:bg-gray-800 disabled:bg-gray-300 text-white font-semibold shadow-lg disabled:shadow-md transition-all hover:scale-105 disabled:scale-100 hover:cursor-pointer flex items-center gap-2">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+      <path fill-rule="evenodd"
+        d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+        clip-rule="evenodd" />
+    </svg>
+    Search
+  </button>
 </div>
 }

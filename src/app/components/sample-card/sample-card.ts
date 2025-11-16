@@ -1,14 +1,11 @@
 import { Component, input, signal, afterNextRender } from '@angular/core';
 import { IWeather } from '../../models/weather.model';
-import { CardModule } from 'primeng/card';
-import { DividerModule } from 'primeng/divider';
 import { DatePipe, DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-sample-card',
-  imports: [CardModule, DividerModule, DatePipe, DecimalPipe],
-  templateUrl: './sample-card.html',
-  styleUrl: './sample-card.css'
+  imports: [DatePipe, DecimalPipe],
+  templateUrl: './sample-card.html'
 })
 export class SampleCard {
   readonly weatherData = input<IWeather>();

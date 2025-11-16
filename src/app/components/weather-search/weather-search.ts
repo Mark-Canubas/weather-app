@@ -1,44 +1,35 @@
-import { Component, output, signal, afterNextRender } from '@angular/core';
-import { InputTextModule } from 'primeng/inputtext';
-import { ButtonModule } from 'primeng/button';
-import { IconFieldModule } from 'primeng/iconfield';
-import { InputIconModule } from 'primeng/inputicon';
+import { Component, output, signal, inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { ButtonDirective } from "primeng/button";
 
 @Component({
   selector: 'app-weather-search',
-  imports: [
-    InputTextModule,
-    ButtonModule,
-    IconFieldModule,
-    InputIconModule
-  ],
-  templateUrl: './weather-search.html',
-  styleUrl: './weather-search.css'
+  imports: [ButtonDirective],
+  templateUrl: './weather-search.html'
 })
-export class WeatherSearch {
-  searchQuery = signal('');
-  selectedUnit = signal<'metric' | 'imperial'>('metric');
-  searchTriggered = output<{city: string, unit: 'metric' | 'imperial'}>();
-  isBrowser = signal(false);
 
-  constructor() {
-    afterNextRender(() => {
-      this.isBrowser.set(true);
-    });
+export class WeatherSearch {
+  private platformId = inject(PLATFORM_ID);
+  
+  public readonly searchQuery = signal<string>('');
+  public readonly searchTriggered = output<{ city: string; units: 'metric' | 'imperial' }>();
+
+  public isBrowser(): boolean {
+    return isPlatformBrowser(this.platformId);
   }
 
-  onSearch() {
+  public onInputChange(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    this.searchQuery.set(target.value);
+  }
+
+  public onSearch(): void {
     const query = this.searchQuery().trim();
     if (query) {
-      this.searchTriggered.emit({
-        city: query,
-        unit: this.selectedUnit()
+      this.searchTriggered.emit({ 
+        city: query, 
+        units: 'metric'
       });
     }
-  }
-
-  onInputChange(event: Event) {
-    const value = (event.target as HTMLInputElement).value;
-    this.searchQuery.set(value);
   }
 }
