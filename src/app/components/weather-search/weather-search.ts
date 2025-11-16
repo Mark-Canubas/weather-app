@@ -41,8 +41,4 @@ export class WeatherSearch {
     const value = (event.target as HTMLInputElement).value;
     this.searchQuery.set(value);
   }
-
-  toggleUnit() {
-    this.selectedUnit.set(this.selectedUnit() === 'metric' ? 'imperial' : 'metric');
-  }
 }

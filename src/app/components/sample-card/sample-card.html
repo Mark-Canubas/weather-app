@@ -41,13 +41,13 @@
             class="w-24 h-24 md:w-28 md:h-28 mx-auto drop-shadow-2xl" />
         }
         <div class="text-5xl font-bold text-slate-800">
-            {{ getTemperature(weatherData()!.main.temp) | number: '1.0-0' }}{{ getTemperatureUnit() }}
+            {{ weatherData()!.main.temp | number: '1.0-0' }}{{ getTemperatureUnit() }}
         </div>
         <div class="text-lg text-slate-600 capitalize font-medium">
             {{ weatherData()?.weather?.[0]?.description }}
         </div>
         <div class="text-xs text-slate-500">
-            Feels like {{ getTemperature(weatherData()!.main.feels_like) | number: '1.0-0' }}{{ getTemperatureUnit() }}
+            Feels like {{ weatherData()!.main.feels_like | number: '1.0-0' }}{{ getTemperatureUnit() }}
         </div>
     </div>
 
@@ -63,7 +63,7 @@
             </svg>
             <div class="text-[10px] text-slate-500 uppercase font-semibold tracking-wide">High</div>
             <div class="text-base font-bold text-slate-800">
-                {{ getTemperature(weatherData()!.main.temp_max) | number: '1.0-0' }}{{ getTemperatureUnit() }}
+                {{ weatherData()!.main.temp_max | number: '1.0-0' }}{{ getTemperatureUnit() }}
             </div>
         </div>
 
@@ -76,7 +76,7 @@
             </svg>
             <div class="text-[10px] text-slate-500 uppercase font-semibold tracking-wide">Low</div>
             <div class="text-base font-bold text-slate-800">
-                {{ getTemperature(weatherData()!.main.temp_min) | number: '1.0-0' }}{{ getTemperatureUnit() }}
+                {{ weatherData()!.main.temp_min | number: '1.0-0' }}{{ getTemperatureUnit() }}
             </div>
         </div>
 
