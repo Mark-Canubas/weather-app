@@ -13,7 +13,6 @@ import { MessageService } from 'primeng/api';
   imports: [
     SampleCard,
     WeatherSearch,
-    LoadingSpinner,
     SearchHistory,
     ToastModule
   ],
